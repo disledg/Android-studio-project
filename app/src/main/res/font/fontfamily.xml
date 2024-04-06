@@ -16,4 +16,9 @@
         android:fontStyle="normal"
         android:fontWeight="400"
         android:fontFamily="@font/semibold"/>
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:fontFamily="@font/bold"/>
+
 </font-family>
