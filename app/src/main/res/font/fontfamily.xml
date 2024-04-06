@@ -3,9 +3,17 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="400"
-        android:font="@font/proximanovaregular" />
+        android:fontFamily="@font/proximanovaregular" />
     <font
         android:fontStyle="italic"
         android:fontWeight="400"
-        android:font="@font/proximanovareguiaritalic" />
+        android:fontFamily="@font/proximanovareguiaritalic" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:fontFamily="@font/bolditalic"/>
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:fontFamily="@font/semibold"/>
 </font-family>

@@ -30,10 +30,11 @@ public class MainActivity extends AppCompatActivity {
                 String username = usernameInputText.getText().toString();
                 String password = passwordInputText.getText().toString();
 
-                if (db.checkUser(username, password)) {
+                if (db.checkLogin(username, password)) {
                     Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     // Redirect to another activity upon successful login
                     Intent intent = new Intent(MainActivity.this, CarsharingActivity.class);
+                    intent.putExtra("name", username);
                     startActivity(intent);
                     finish();
                 } else {

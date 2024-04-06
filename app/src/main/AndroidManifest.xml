@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarsheringApplication"
         tools:targetApi="31">
+        <activity android:name=".CarsharingActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

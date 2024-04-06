@@ -43,7 +43,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_PASSWORD, password); // Поле "password"
 
         // Вставляем данные в таблицу
-        long result = db.insert(DATABASE_NAME, null, values);
+        long result = db.insert(TABLE_NAME, null, values);
         db.close();
 
         if (result == -1) {
@@ -54,13 +54,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             // Можно выполнить какие-то действия при успешной вставке
         }
     }
-    public boolean checkUser(String username, String password) {
+    public boolean checkLogin(String username, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = {COLUMN_USERNAMES};
-        String selection = COLUMN_USERNAMES + "=?" + " and " + COLUMN_PASSWORD + "=?";
+        String[] columns = {"Usernames"};
+        String selection = "Usernames = ? AND Passwords = ?";
         String[] selectionArgs = {username, password};
-        Cursor cursor = db.query(TABLE_NAME, columns, selection, selectionArgs,
-                null, null, null);
+
+        Cursor cursor = db.query(TABLE_NAME, columns, selection, selectionArgs, null, null, null);
         int count = cursor.getCount();
         cursor.close();
         db.close();
