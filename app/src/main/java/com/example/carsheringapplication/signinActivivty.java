@@ -4,40 +4,83 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.ktx.Firebase;
+
+import java.util.HashMap;
+
 public class signinActivivty extends AppCompatActivity {
-    private static final int PICK_IMAGE_REQUEST = 1;
+
+    private EditText emailEditText, passwordEditText;
+    private FirebaseAuth mAuth;
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signin);
-        EditText loginNInput = findViewById(R.id.editTextLogin);
-        EditText passwordInput = findViewById(R.id.editTextPassword);
-        EditText phoneInput = findViewById(R.id.editTextPhone);
-        EditText emailInput = findViewById(R.id.editTextEmailAddress);
-        Button fileInput = findViewById(R.id.fileInputButton);
 
-        fileInput.setOnClickListener(new View.OnClickListener() {
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+        // Find views
+        emailEditText = findViewById(R.id.editTextEmailAddress);
+        passwordEditText = findViewById(R.id.editTextPassword);
+        Button regBtn = findViewById(R.id.registerButton);
+        regBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, PICK_IMAGE_REQUEST);
-                Toast.makeText(getApplicationContext(), "Кнопка была нажата", Toast.LENGTH_SHORT).show();
-            }
-        });
-        Button backButton = findViewById(R.id.back);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
+                registerUser(v);
             }
         });
     }
+
+    public void registerUser(View view) {
+        String email = emailEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+
+        if (TextUtils.isEmpty(email)) {
+            emailEditText.setError("Введите адрес электронной почты");
+            return;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            passwordEditText.setError("Введите пароль");
+            return;
+        }
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener() {
+                    @Override
+                    public void onComplete(@NonNull Task task) {
+                        if (task.isSuccessful()) {
+                            // Регистрация успешна, вы можете добавить здесь дополнительные действия,
+                            // например, переход на следующий экран
+                            Intent intent = new Intent(signinActivivty.this,MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                            Toast.makeText(signinActivivty.this, "Регистрация успешна", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Регистрация не удалась
+                            Toast.makeText(signinActivivty.this, "Ошибка регистрации: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                });
+
+    }
+
 }
