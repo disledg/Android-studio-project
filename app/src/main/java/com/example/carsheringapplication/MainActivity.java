@@ -12,7 +12,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,7 +62,9 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Вход успешен, переходим на другую активность
                             Intent intent = new Intent(MainActivity.this, CarsharingActivity.class);
+
                             startActivity(intent);
+
                             finish();
                         } else {
                             // Вход не удался

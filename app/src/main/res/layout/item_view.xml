@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -9,16 +10,16 @@
         android:id="@+id/imageView"
         android:layout_marginRight="10dp"
         android:layout_centerVertical="true"/>
+
     <TextView
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/name"
         android:layout_toEndOf="@id/imageView"
-        android:textColor="@color/black"
         android:fontFamily="@font/bold"
-        android:textSize="20dp"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:text="Название авто"/>
+        android:text="Название авто"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,16 +32,14 @@
         android:text="Местонахождение"/>
 
     <TextView
+        android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:id="@+id/price"
-        android:text="1100$"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="15dp"
         android:fontFamily="@font/semibold"
+        android:text="1100$"
         android:textSize="35dp" />
 
 

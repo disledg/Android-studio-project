@@ -12,6 +12,7 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     Context context;
+    private RecyclerViewClickListener mListener;
     List<item> items;
     public MyAdapter(List<item> items,Context context) {
         this.items = items;
@@ -24,12 +25,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder( MyViewHolder holder, int position) {
+        public void onBindViewHolder(final MyViewHolder holder, final int position) {
         item data = items.get(position);
         holder.carPhoto.setImageResource(data.getImageResource());
         holder.locationText.setText(data.getItemLoc());
         holder.nameText.setText(data.getItemName());
         holder.priceText.setText(data.getItemPrice());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.onClick(view, holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override

@@ -29,19 +29,21 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/contact" />
 
-        <ImageView
-            android:id="@+id/homeBtn"
+        <ImageButton
+            android:id="@+id/imageButton2"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="370dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="140dp"
+            android:layout_marginBottom="14dp"
+            android:background="@null"
+            android:onClick="onImageButtonClick1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/home"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/home" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/profileBtn"
@@ -59,11 +61,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="317dp"
-        android:layout_height="115dp"
+        android:layout_width="311dp"
+        android:layout_height="123dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="832dp"
+        android:layout_marginBottom="805dp"
         android:background="@drawable/avatar_taker"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,5 +97,44 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="331dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/sendmessage"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/editTextTextMultiLine"
+            android:layout_width="317dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="9dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="69dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="40dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/senmessage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

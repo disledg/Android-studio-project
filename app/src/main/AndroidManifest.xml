@@ -32,6 +32,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.carsheringapplication.signinActivivty" />
+        <activity android:name="com.example.carsheringapplication.ContactActivivty" />
     </application>
 
 </manifest>
