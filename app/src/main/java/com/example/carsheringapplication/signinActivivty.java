@@ -46,6 +46,13 @@ public class signinActivivty extends AppCompatActivity {
                 registerUser(v);
             }
         });
+        Button back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                finish();
+            }
+        });
     }
 
     public void registerUser(View view) {

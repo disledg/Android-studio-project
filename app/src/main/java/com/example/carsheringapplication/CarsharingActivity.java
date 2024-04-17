@@ -25,31 +25,22 @@ public class CarsharingActivity extends AppCompatActivity implements RecyclerVie
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         List<item> carItems = new ArrayList<>();
 // Заполните dataList данными для отображения в RecyclerView
-        carItems.add(new item(R.drawable.volkswagen_polo, "Volkswagen Polo", "2400 руб.", "Саратов"));
-        carItems.add(new item(R.drawable.kiario, "Kia Rio", "1800 руб.", "Симферополь"));
-        carItems.add(new item(R.drawable.volkswagen_polo, "Volkswagen Polo", "2400 руб.", "Саратов"));
-        carItems.add(new item(R.drawable.kiario, "Kia Rio", "1800 руб.", "Симферополь"));
-        carItems.add(new item(R.drawable.skodaoctavia, "Skoda Octavia", "1690 руб.", "Ялта"));
-        carItems.add(new item(R.drawable.nissanqashqai, "Nissan Qashqai", "2000 руб.", "Ялта"));
-        carItems.add(new item(R.drawable.nissanqashqai, "Nissan Qashqai", "2000 руб.", "Ялта"));
-        carItems.add(new item(R.drawable.skoda_rapid, "Skoda Rapid", "1950 руб.", "Симферополь"));
-        carItems.add(new item(R.drawable.skodaoctavia, "Skoda Octavia", "1690 руб.", "Ялта"));
+        carItems.add(new item(R.drawable.volkswagen_polo, "Volkswagen Polo", "2400 ₽", "Саратов","Е397КЕ"));
+        carItems.add(new item(R.drawable.kiario, "Kia Rio", "1800 ₽", "Симферополь","Т090КР"));
+        carItems.add(new item(R.drawable.volkswagen_polo, "Volkswagen Polo", "2400 ₽", "Саратов","У657РМ"));
+        carItems.add(new item(R.drawable.kiario, "Kia Rio", "1800 ₽", "Симферополь","А157АК"));
+        carItems.add(new item(R.drawable.skodaoctavia, "Skoda Octavia", "1690 ₽", "Ялта","Е130ВК"));
+        carItems.add(new item(R.drawable.nissanqashqai, "Nissan Qashqai", "2000 ₽", "Ялта","Р067НА"));
+        carItems.add(new item(R.drawable.nissanqashqai, "Nissan Qashqai", "2000 ₽", "Ялта","Р111ТР"));
+        carItems.add(new item(R.drawable.skoda_rapid, "Skoda Rapid", "1950 ₽", "Симферополь","О663НА"));
+        carItems.add(new item(R.drawable.skodaoctavia, "Skoda Octavia", "1690 ₽", "Ялта","В933УМ"));
         //carItems.add(new item(R.drawable.image2, "Text4", "Text5", "Text6"));
-        MyAdapter adapter = new MyAdapter(carItems,getApplicationContext());
+        MyAdapter adapter = new MyAdapter(carItems,getApplicationContext(), this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         ImageView homeBtn = findViewById(R.id.imageButton2);
-        ImageButton contactsBtn = findViewById(R.id.imageButton);
         ImageView profileBtn = findViewById(R.id.profileBtn);
-        contactsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent intent = new Intent(CarsharingActivity.this, ContactActivivty.class);
-                startActivity(intent);
-                finish();
-            }
-        });
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
