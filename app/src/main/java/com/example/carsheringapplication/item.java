@@ -6,11 +6,11 @@ import org.threeten.bp.LocalTime;
 public class item {
     private int imageResource;
     private String itemName;
-    private String itemPrice;
+    private int itemPrice;
     private String itemLoc;
     private String numberCar;
 
-    public item(int imageResource, String itemName, String itemPrice, String itemLoc, String numberCar) {
+    public item(int imageResource, String itemName, int itemPrice, String itemLoc, String numberCar) {
         this.imageResource = imageResource;
         this.itemName = itemName;
         this.itemPrice = itemPrice;
@@ -25,7 +25,7 @@ public class item {
         return itemName;
     }
 
-    public String getItemPrice() {
+    public int getItemPrice() {
         return itemPrice;
     }
 

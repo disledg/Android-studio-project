@@ -10,7 +10,7 @@ public class MyAlertDialog {
     public interface DialogDismissListener {
         void onDialogDismissed();
     }
-    public static void showInputDialog(Context context, Intent intent,DialogDismissListener listener) {
+    public static void showInputDialog(Context context, Intent intent, DialogDismissListener listener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Введите время аренды в днях");
 
@@ -22,11 +22,11 @@ public class MyAlertDialog {
         builder.setPositiveButton("Далее", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String userInput = input.getText().toString();
+                int userInput = Integer.parseInt(input.getText().toString());
                 intent.putExtra("time", userInput);
+                listener.onDialogDismissed();
             }
         });
-
         // Устанавливаем кнопку "Отмена"
         builder.setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
             @Override
@@ -35,14 +35,6 @@ public class MyAlertDialog {
             }
         });
         AlertDialog dialog = builder.create();
-        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                listener.onDialogDismissed();
-            }
-        });
-
-        // Показываем диалоговое окно
         dialog.show();
     }
 }

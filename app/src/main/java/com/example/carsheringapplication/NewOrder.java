@@ -24,17 +24,20 @@ public class NewOrder extends AppCompatActivity  {
         TextView timeTextView = findViewById(R.id.timeTextView);
         TextView arendTimeTV = findViewById(R.id.arendTimeTextView);
         TextView priceTV = findViewById(R.id.price1TextView);
-        Ticket newOrder = new Ticket(intent.getStringExtra("name"),intent.getIntExtra("price",2),intent.getStringExtra("location"),intent.getStringExtra("number"),intent.getIntExtra("image",0),intent.getIntExtra("time",0));
-        priceTextView.setText(String.valueOf(newOrder.getPrice()));
+        Ticket newOrder = new Ticket(intent.getStringExtra("name"),intent.getIntExtra("price",2),intent.getStringExtra("location"),intent.getStringExtra("number"),intent.getIntExtra("image",0),intent.getIntExtra("time",2));
+        priceTextView.setText(String.valueOf(newOrder.getPrice()) + " ₽");
         carTextView.setText(newOrder.getCarName());
         numberTextView.setText(newOrder.getNumberCar());
         locationTextView.setText(newOrder.getPickUpLocation());
-        dateTextView.setText(newOrder.getDate().toString());
+        dateTextView.setText(newOrder.getDate().toString().replace("-", "."));
         timeTextView.setText(newOrder.getTime().toString());
         int price = newOrder.getPrice();
         price = price * newOrder.getPickUpTime();
-        arendTimeTV.setText(String.valueOf(newOrder.getPickUpTime()));
-        priceTV.setText(String.valueOf(price));
+        if(newOrder.getPickUpTime() < 2){arendTimeTV.setText(String.valueOf(newOrder.getPickUpTime()) + " день");}
+        else if (newOrder.getPickUpTime() >1 && newOrder.getPickUpTime() <5) {
+            arendTimeTV.setText(String.valueOf(newOrder.getPickUpTime()) + " дня");
+        } else{arendTimeTV.setText(String.valueOf(newOrder.getPickUpTime()) + " дней");}
+        priceTV.setText(String.valueOf(price) + " ₽");
         //"₽"
     }
 }

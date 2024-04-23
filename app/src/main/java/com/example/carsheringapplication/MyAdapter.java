@@ -31,12 +31,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     }
 
     @Override
-        public void onBindViewHolder(final MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         item data = items.get(position);
         holder.carPhoto.setImageResource(data.getImageResource());
         holder.locationText.setText(data.getItemLoc());
         holder.nameText.setText(data.getItemName());
-        holder.priceText.setText(data.getItemPrice());
+        holder.priceText.setText(data.getItemPrice() + "₽");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +44,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
                     mListener.onClick(view, holder.getAdapterPosition());
                 }
                 mListener.onClick(view, holder.getAdapterPosition());
-                Intent intent = new Intent(view.getContext(), NewOrder.class);
+                final Intent intent = new Intent(view.getContext(), NewOrder.class);
                 intent.putExtra("location", data.getItemLoc());
                 intent.putExtra("name", data.getItemName());
                 intent.putExtra("price", data.getItemPrice());
